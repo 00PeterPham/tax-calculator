@@ -38,3 +38,30 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include comments where you feel that they would be helpful.
 * Include a README with instructions on how setup, run, and test the application.
 * Include unit tests.
+
+## TO DO:
+- Add tax calculations (add to a 'utils' folder?) and output to TaxResultsContainer
+- Adding routing, either manually or with React router to implement 'back' functionality
+- Add LESS or SASS
+- Style app
+- Figure out how to set defaultProps
+
+## Dev Planning:
+- If salary is <= taxBracket then calculate tax using that taxRate
+- filter to see which taxBrackets <= salary
+- iterate through the filtered Array and do tax calc
+-- taxResult = (salary - prevTaxBracket) x taxRAte
+** Issue with above implementation. Only taxBrackets <= salary are applied, the remainder of one is not taxed in the next bracket
+ie. salary = 50,000. 47,630 of the salary is taxed at 15%, the remaining 2,370 should be taxed at 20.5%
+
+*New Strategy:
+- Tax salary at first bracket (50,000 x 15%)
+- Subtract salary from current taxBracket amnt (ie. remainingSalary = 50,000 - 47,630 = 2,370)
+- If remainingSalary > 0, then move to next taxBracket and tax salary at next taxRate (2,370 x 20.5%)
+- else stop calculations (can return and escape loop or use function * generators)
+
+Fixed Bugs:
+- taxCalculator() being executed before state was set, used setState()'s callback param to execute after setting of state
+
+## Dev Notes:
+- There is a presentational component, TaxResultTier.jsx, that is used mulitple times in TaxResultsContainer.jsx. I do this by mapping through the taxResults array and returning an array of HTML for the TaxResultTier. Though this does decrease the readibility in the TaxResultTier.jsx file, I decided to keep this logic in the TaxResultTier.jsx vs the TaxResultsContainer.jsx so that it would be cleaner in the TaxResultsContainer.jsx file. So that the containers do not have any transformations in them, only the use of presentational components.
