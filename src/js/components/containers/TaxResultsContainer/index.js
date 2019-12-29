@@ -1,7 +1,7 @@
 import React from "react";
-import SalaryTitle from '../presentational/SalaryTitle.jsx';
-import TaxResultTier from '../presentational/TaxResultTier.jsx';
-import TotalTax from '../presentational/TotalTax.jsx';
+import SalaryTitle from '../../presentational/SalaryTitle';
+import TaxResultTier from '../../presentational/TaxResultTier';
+import TotalTax from '../../presentational/TotalTax';
 
 const TaxResultsContainer = ({ salary, taxResults }) => {
   return (

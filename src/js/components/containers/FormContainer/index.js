@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../presentational/Input.jsx";
-import SubmitButton from "../presentational/SubmitButton.jsx";
+import Input from "../../presentational/Input";
+import SubmitButton from "../../presentational/SubmitButton";
 
 const FormContainer = ({ handleSubmit }) => (
   <form className="salary-form" onSubmit={handleSubmit}>

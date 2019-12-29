@@ -42,6 +42,7 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 ## TO DO:
 - Add tax calculations (add to a 'utils' folder?) and output to TaxResultsContainer
 - Adding routing, either manually or with React router to implement 'back' functionality
+- Show FormContainer and TaxResultsContainer as 2 seperate pages, in that order
 - Add LESS or SASS
 - Style app
 - Figure out how to set defaultProps

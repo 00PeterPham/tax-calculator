@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import rndNumUp from "../utils/rndNumUp";
-import FormContainer from "./containers/FormContainer.jsx";
-import TaxResultsContainer from "./containers/TaxResultsContainer.jsx";
+import FormContainer from "./containers/FormContainer";
+import TaxResultsContainer from "./containers/TaxResultsContainer";
 
 class App extends Component {
   state = {
