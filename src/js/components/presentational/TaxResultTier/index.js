@@ -4,14 +4,14 @@ import formatNumber from "../../../utils/formatNumber";
 
 const TaxResultTier = ({ taxResults }) => {
   const taxResultsTiersHTML = taxResults.map((taxResult) => {
-    const taxTier = taxResult.tier;
+    const taxTier = taxResult.taxTier;
     const taxRate = taxResult.taxRate * 100;
     const taxableAmount = formatNumber(taxResult.taxableAmount);
     const tax = formatNumber(taxResult.tax);
 
     return (
       <div key={taxTier} className="tax-results__tier">
-        <h2>Tier: {taxTier}</h2>
+        <h2>Tax Tier: {taxTier}</h2>
         <div className="taxRate">Tax Rate: {taxRate}%</div>
         <div className="tax-results__taxableAmount">Taxed Amount: {taxableAmount}</div>
         <div className="tax">Tax: {tax}</div>

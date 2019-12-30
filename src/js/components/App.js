@@ -36,7 +36,6 @@ class App extends Component {
     taxResults: []
   }
 
-  //TODO: Move to Utils folder
   taxCalculator = () => {
     let salary = this.state.salary;
     const taxTiers = this.state.taxTiers;
@@ -47,12 +46,12 @@ class App extends Component {
       const taxRate = taxTiers[i].taxRate;
       const taxableAmount = taxTiers[i].taxableAmount;
       
-      //Since the last tier does not have a limit on what the taxableAmount is, we multiply the taxRate with the entire leftover salary amount
+      //Since the last tier does not have a limit on what the taxableAmount is, I multiply the taxRate with the entire leftover salary amount
       const salaryLessThanTaxableAmnt = (i === taxTiers.length - 1) ? true : (salary <= taxableAmount); //make true if last taxTier is being calculated
         
       if(salaryLessThanTaxableAmnt){
         taxResults.push({
-          tier: taxTier,
+          taxTier,
           taxRate,
           taxableAmount: salary,
           tax: rndNumUp(salary * taxRate),
@@ -60,7 +59,7 @@ class App extends Component {
         break;
       }else {
         taxResults.push({
-          tier: taxTier,
+          taxTier,
           taxRate,
           taxableAmount,
           tax: (taxableAmount * taxRate),
@@ -79,6 +78,7 @@ class App extends Component {
     this.setState({
       salary,
     }, () => {
+      //taxCaclulator() requires the 'salary' state before executing
       const taxResults = this.taxCalculator();
       this.setState({
         taxResults,
