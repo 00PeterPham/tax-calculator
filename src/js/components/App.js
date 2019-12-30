@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import {
-  Switch,
-  Route,
-  withRouter
-} from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import rndNumUp from "../utils/rndNumUp";
 import FormContainer from "./containers/FormContainer";
 import TaxResultsContainer from "./containers/TaxResultsContainer";
+import './containers/FormContainer/formContainerStyles.less';
+import './presentational/Input/InputStyles.less'
+import './presentational/Button/ButtonStyles.less';
 
 class App extends Component {
   state = {
@@ -74,13 +73,17 @@ class App extends Component {
     }
     return taxResults;
   }
+  goResultsPage = () => {
+    this.props.history.push('/results');
+  }
+  goBack = () => {
+    this.props.history.goBack();
+  }
   handleSubmit = (evt) => {
     evt.preventDefault();
     const inputVal = evt.target.salaryInput.value;
     const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
     const salary = parseFloat(inputValSanitized);
-
-    this.props.history.push('/results');///
 
     this.setState({
       salary,
@@ -91,9 +94,11 @@ class App extends Component {
         taxResults,
       })
     });
+
+    this.goResultsPage();
   }
   render(){
-    const { handleSubmit } = this;
+    const { goBack, handleSubmit } = this;
     const { salary, taxTiers, taxResults } = this.state;
     return (
       <>
@@ -105,6 +110,7 @@ class App extends Component {
             salary={salary}
             taxTiers={taxTiers}
             taxResults={taxResults}
+            goBack={goBack}
           />
         </Route>
       </>

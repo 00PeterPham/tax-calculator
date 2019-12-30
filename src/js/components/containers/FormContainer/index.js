@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "../../presentational/Input";
-import SubmitButton from "../../presentational/SubmitButton";
+import Button from "../../presentational/Button";
 
 const FormContainer = ({ handleSubmit }) => (
   <form className="salary-form" onSubmit={handleSubmit}>
@@ -10,7 +10,7 @@ const FormContainer = ({ handleSubmit }) => (
       type="text"
       name="salaryInput"
     />
-    <SubmitButton />
+    <Button className="salary-form__button" text="submit" />
   </form>
 );
 export default FormContainer;
