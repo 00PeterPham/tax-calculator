@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import {
+  Switch,
+  Route,
+  withRouter
+} from "react-router-dom";
 import rndNumUp from "../utils/rndNumUp";
 import FormContainer from "./containers/FormContainer";
 import TaxResultsContainer from "./containers/TaxResultsContainer";
@@ -75,6 +80,8 @@ class App extends Component {
     const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
     const salary = parseFloat(inputValSanitized);
 
+    this.props.history.push('/results');///
+
     this.setState({
       salary,
     }, () => {
@@ -90,15 +97,19 @@ class App extends Component {
     const { salary, taxTiers, taxResults } = this.state;
     return (
       <>
-        <FormContainer handleSubmit={handleSubmit} />
-        <TaxResultsContainer 
-          salary={salary}
-          taxTiers={taxTiers}
-          taxResults={taxResults}
-        />
+        <Route exact path="/">
+          <FormContainer handleSubmit={handleSubmit} />
+        </Route>
+        <Route path="/results">
+          <TaxResultsContainer 
+            salary={salary}
+            taxTiers={taxTiers}
+            taxResults={taxResults}
+          />
+        </Route>
       </>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

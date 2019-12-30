@@ -40,8 +40,7 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- Adding routing, either manually or with React router to implement 'back' functionality
-- Show FormContainer and TaxResultsContainer as 2 seperate pages, in that order
+- Create routing file?
 - Add LESS or SASS
 - Style app
 - Figure out how to set defaultProps
