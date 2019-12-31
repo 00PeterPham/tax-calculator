@@ -40,8 +40,8 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- Add check on form if no-digits are entered, return error msg
-- Add Unit Tests
+- Add Unit Tests for the rest of Utils, add Error testing as well. 
+- Add Unit Tests for Components
 - Add LESS prefixer for all browsers
 - Style app
 - Figure out how to set defaultProps
