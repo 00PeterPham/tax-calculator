@@ -1,6 +1,6 @@
 const calcTotalTax = (taxResults) => {
   return taxResults.reduce((total, taxResult) => {
     return total + taxResult.tax;
-  }, taxResults[0].tax)
+  }, 0)
 }
 export default calcTotalTax;

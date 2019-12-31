@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import rndNumUp from "../utils/rndNumUp";
+import isNum from "../utils/isNum";
 import FormContainer from "./containers/FormContainer";
 import TaxResultsContainer from "./containers/TaxResultsContainer";
 import './containers/FormContainer/formContainerStyles.less';
 import './presentational/Input/InputStyles.less'
 import './presentational/Button/ButtonStyles.less';
+import './presentational/Error/ErrorStyles.less';
 
 class App extends Component {
   state = {
     salary: 0,
+    salaryInputError: false,
+    taxResults: [],
     taxTiers: [
       {
         tier: 1,
@@ -37,7 +41,6 @@ class App extends Component {
         taxableAmount: null,
       },
     ],
-    taxResults: []
   }
 
   taxCalculator = () => {
@@ -82,28 +85,40 @@ class App extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     const inputVal = evt.target.salaryInput.value;
+    const inputIsNotEmpty = inputVal !== '';
+    const inputIsNum = isNum(inputVal);
     const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
     const salary = parseFloat(inputValSanitized);
 
-    this.setState({
-      salary,
-    }, () => {
-      //taxCaclulator() requires the 'salary' state before executing
-      const taxResults = this.taxCalculator();
+    if(inputIsNum && inputIsNotEmpty){
       this.setState({
-        taxResults,
+        salary,
+        salaryInputError: false,
+      }, () => {
+        //taxCaclulator() requires the 'salary' state before executing
+        const taxResults = this.taxCalculator();
+        this.setState({
+          taxResults,
+        })
+      });
+  
+      this.goResultsPage();
+    } else {
+      this.setState({
+        salaryInputError: true,
       })
-    });
-
-    this.goResultsPage();
+    }
   }
   render(){
     const { goBack, handleSubmit } = this;
-    const { salary, taxTiers, taxResults } = this.state;
+    const { salary, salaryInputError, taxResults, taxTiers } = this.state;
     return (
       <>
         <Route exact path="/">
-          <FormContainer handleSubmit={handleSubmit} />
+          <FormContainer 
+            handleSubmit={handleSubmit} 
+            salaryInputError={salaryInputError}
+          />
         </Route>
         <Route path="/results">
           <TaxResultsContainer 
