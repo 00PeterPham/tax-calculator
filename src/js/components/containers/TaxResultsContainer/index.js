@@ -1,10 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import SalaryTitle from '../../presentational/SalaryTitle';
 import TaxResultTier from '../../presentational/TaxResultTier';
 import TotalTax from '../../presentational/TotalTax';
 import Button from '../../presentational/Button';
 
-const TaxResultsContainer = ({ salary, taxResults, goBack }) => {
+const TaxResultsContainer = ({ salary, taxResults }) => {
+  const history = useHistory();
+  const goBack = () => {
+    history.goBack();
+  }
   return (
     <div className="tax-results"> 
       <SalaryTitle salary={salary} />

@@ -48,7 +48,7 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 - Figure out how to set defaultProps
 - Add reload on results page redirect to FormContainer path="/"
 - Run accessibility tests
-- Refactor, restructure folders
+- Refactor, restructure folders, move methods to beside componenet index.js file? (Atomic Design?)
 
 ## Dev Planning:
 - If salary is <= taxBracket then calculate tax using that taxRate

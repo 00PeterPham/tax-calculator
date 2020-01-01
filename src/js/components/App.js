@@ -80,9 +80,6 @@ class App extends Component {
   goResultsPage = () => {
     this.props.history.push('/results');
   }
-  goBack = () => {
-    this.props.history.goBack();
-  }
   handleSubmit = (evt) => {
     evt.preventDefault();
     const inputVal = evt.target.salaryInput.value;
@@ -126,7 +123,6 @@ class App extends Component {
             salary={salary}
             taxTiers={taxTiers}
             taxResults={taxResults}
-            goBack={goBack}
           />
         </Route>
       </>
