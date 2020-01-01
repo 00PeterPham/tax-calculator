@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import rndNumUp from "../utils/rndNumUp";
-import isNum from "../utils/isNum";
+import rndNumUp from "./_lib/rndNumUp";
+import isNum from "./_lib/isNum";
 import FormContainer from "./containers/FormContainer";
 import TaxResultsContainer from "./containers/TaxResultsContainer";
 import './containers/FormContainer/formContainerStyles.less';
 import './presentational/Input/InputStyles.less'
 import './presentational/Button/ButtonStyles.less';
 import './presentational/Error/ErrorStyles.less';
+import './presentational/TotalTax/TotalTaxStyles.less';
 
 class App extends Component {
   state = {
@@ -47,14 +48,14 @@ class App extends Component {
     let salary = this.state.salary;
     const taxTiers = this.state.taxTiers;
     const taxResults = [];
-  
-    for(let i = 0; i <= taxTiers.length; i++){
-      const taxTier = taxTiers[i].tier;
-      const taxRate = taxTiers[i].taxRate;
-      const taxableAmount = taxTiers[i].taxableAmount;
+
+    for (const [index, tier] of taxTiers.entries()){
+      const taxTier = tier.tier;
+      const taxRate = tier.taxRate;
+      const taxableAmount = tier.taxableAmount;
       
       //Since the last tier does not have a limit on what the taxableAmount is, I multiply the taxRate with the entire leftover salary amount
-      const salaryLessThanTaxableAmnt = (i === taxTiers.length - 1) ? true : (salary <= taxableAmount); //make true if last taxTier is being calculated
+      const salaryLessThanTaxableAmnt = (index === taxTiers.length - 1) ? true : (salary <= taxableAmount); //make true if last taxTier is being calculated
         
       if(salaryLessThanTaxableAmnt){
         taxResults.push({

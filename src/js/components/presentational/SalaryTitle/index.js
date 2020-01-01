@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import formatNumber from '../../../utils/formatNumber';
+import formatNumber from '../../_lib/formatNumber';
 
 const SalaryTitle = ({ salary }) => {
   const salaryString = formatNumber(salary || 0);
