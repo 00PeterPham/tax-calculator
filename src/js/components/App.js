@@ -66,6 +66,8 @@ class App extends Component {
         });
         break;
       }else {
+        console.log(`Tax Results:`);
+        console.log(taxResults);
         taxResults.push({
           taxTier,
           taxRate,
