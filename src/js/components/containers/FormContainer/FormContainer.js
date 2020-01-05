@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../../presentational/Input/Input";
-import Button from "../../presentational/Button/Button";
-import Error from "../../presentational/Error/Error";
+import Input from "../../presentational/Input";
+import Button from "../../presentational/Button";
+import Error from "../../presentational/Error";
 
 const FormContainer = ({ handleSubmit, salaryInputError }) => (
   <form className="salary-form" onSubmit={handleSubmit} noValidate>
