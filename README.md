@@ -40,7 +40,10 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- Create a 'lib' folder inside components folder to store all utils JS, move 'taxCalc' there
+- Move all functions that are used more then once into the '_lib' folder
+- Move JS functions that are used by one component inside that component folder. ie. 'calcTotalTax.js' -> TotaTax
+- Make sure each function, or class do one thing 'Single Responsibility Principle'
+
 - Add Unit Tests for the rest of Utils, add Error testing as well. 
 - Add Unit Tests for Components
 - Add LESS prefixer for all browsers
@@ -71,3 +74,6 @@ Fixed Bugs:
 - There is a presentational component, TaxResultTier.jsx, that is used mulitple times in TaxResultsContainer.jsx. I do this by mapping through the taxResults array and returning an array of HTML for the TaxResultTier. Though this does decrease the readibility in the TaxResultTier.jsx file, I decided to keep this logic in the TaxResultTier.jsx vs the TaxResultsContainer.jsx so that it would be cleaner in the TaxResultsContainer.jsx file. So that the containers do not have any transformations in them, only the use of presentational components.
 - Added a 'Go Back' button on the Tax Results page. This button and the browser's back button can both me used to navigate back to the previous page (Salary Input Form)
 - Creating a 'componenets/lib' folder to store helper functions for easier testing and better organization
+
+## Lessons:
+- Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"

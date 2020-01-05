@@ -5,7 +5,7 @@ const calcTotalTax = (taxResults) => {
     }, 0)
   }
   catch(err){
-    alert('there be an error');
+    console.log('calcTotalTax() being passed incorrect type of value or no value');
   }
 }
 export default calcTotalTax;
