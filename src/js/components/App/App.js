@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import isNum from "../_lib/isNum";
-import taxCalculator from "./taxCalculator";
+import isNum from "./utils/isNum";
+import taxCalculator from "./utils/taxCalculator";
 import FormContainer from "../containers/FormContainer";
 import TaxResultsContainer from "../containers/TaxResultsContainer";
 import '../containers/FormContainer/formContainerStyles.less';

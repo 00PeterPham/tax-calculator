@@ -41,8 +41,9 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 
 ## TO DO:
 - Move all functions that are used more then once into the '_lib' folder
-- Move JS functions that are used by one component inside that component folder. ie. 'calcTotalTax.js' -> TotaTax
+- Move JS functions that are used by one component inside that a utils folder inside component folder. ie. 'calcTotalTax.js' -> TotaTax/utils
 - Make sure each function, or class do one thing 'Single Responsibility Principle'
+
 
 - Add Unit Tests for the rest of Utils, add Error testing as well. 
 - Add Unit Tests for Components
@@ -74,7 +75,8 @@ Fixed Bugs:
 - There is a presentational component, TaxResultTier.jsx, that is used mulitple times in TaxResultsContainer.jsx. I do this by mapping through the taxResults array and returning an array of HTML for the TaxResultTier. Though this does decrease the readibility in the TaxResultTier.jsx file, I decided to keep this logic in the TaxResultTier.jsx vs the TaxResultsContainer.jsx so that it would be cleaner in the TaxResultsContainer.jsx file. So that the containers do not have any transformations in them, only the use of presentational components.
 - Added a 'Go Back' button on the Tax Results page. This button and the browser's back button can both me used to navigate back to the previous page (Salary Input Form)
 - Creating a 'componenets/lib' folder to store helper functions for easier testing and better organization
-- Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which componenet you are working on.
+- Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which component you are working on. However, I did keep an index.js file inside each component folder that needed to be imported as a module make importing cleaner but to also make refactoring or future additions easier. If new files were added, names changed, edited etc.. only the index.js file has to be edited (per component) and not everywhere they are imported
+- 
 
 ## Lessons:
 - Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"

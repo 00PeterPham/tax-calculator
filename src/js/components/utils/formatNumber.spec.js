@@ -1,4 +1,4 @@
-import formatNumber from '../formatNumber'
+import formatNumber from './formatNumber'
 
 describe('formatNumber', () => {
   test('Takes a number add "thousands commas", sets number to 2 decimal places and converts to String', () => {

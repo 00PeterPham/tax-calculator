@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import formatNumber from '../../_lib/formatNumber';
-import calcTotalTax from '../../_lib/calcTotalTax';
+import formatNumber from '../../utils/formatNumber';
+import calcTotalTax from './utils/calcTotalTax';
 
 const TotalTax = ({ taxResults }) => {
   const totalTax = formatNumber(calcTotalTax(taxResults));

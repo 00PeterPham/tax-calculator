@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import formatNumber from "../../_lib/formatNumber";
+import formatNumber from "../../utils/formatNumber";
 
 const TaxResultTier = ({ taxResults }) => {
   const taxResultsTiersHTML = taxResults.map((taxResult) => {

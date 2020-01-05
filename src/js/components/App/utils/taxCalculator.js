@@ -1,4 +1,4 @@
-import rndNumUp from "../_lib/rndNumUp";
+import rndNumUp from "./rndNumUp";
 
 const taxCalculator = (salary, taxTiers) => {
   // let salary = this.state.salary;
