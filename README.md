@@ -74,6 +74,7 @@ Fixed Bugs:
 - There is a presentational component, TaxResultTier.jsx, that is used mulitple times in TaxResultsContainer.jsx. I do this by mapping through the taxResults array and returning an array of HTML for the TaxResultTier. Though this does decrease the readibility in the TaxResultTier.jsx file, I decided to keep this logic in the TaxResultTier.jsx vs the TaxResultsContainer.jsx so that it would be cleaner in the TaxResultsContainer.jsx file. So that the containers do not have any transformations in them, only the use of presentational components.
 - Added a 'Go Back' button on the Tax Results page. This button and the browser's back button can both me used to navigate back to the previous page (Salary Input Form)
 - Creating a 'componenets/lib' folder to store helper functions for easier testing and better organization
+- Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which componenet you are working on.
 
 ## Lessons:
 - Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"

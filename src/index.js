@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import App from "./js/components/App";
+import App from "./js/components/App/App";
 
 const wrapper = document.getElementById("app");
 
