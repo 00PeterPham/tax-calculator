@@ -79,6 +79,10 @@ Fixed Bugs:
 - Creating a 'componenets/lib' folder to store helper functions for easier testing and better organization
 - Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which component you are working on. However, I did keep an index.js file inside each component folder that needed to be imported as a module make importing cleaner but to also make refactoring or future additions easier. If new files were added, names changed, edited etc.. only the index.js file has to be edited (per component) and not everywhere they are imported
 - Abstracted setState into seperate functions. ie. setSalary, to clean up App.js and follow 'Single Responsibility Principle', however, by doing so, I've had to pass 'this' (the Class Component Object) to the setState functions. Option: change Class componenet to Functional component and use hooks. ie. useState()
+- Kept inputError state local to FormContainer.js, since its only used in FormContainer.js. By doing so, I had to add an onclick event to the <Button /> so that I could validate the input before submitting the form vs submitting the form by clicking the <Button /> by default, and checking the input validation afterwards in App.js
 
 ## Lessons:
 - Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"
+- Able to abstract this.setState() from Class component, into imported functions by passing 'this' as an argument to the function. ie. setSalaryState = (component, salary) => {          use: setSalaryState(this, salary)
+    component.setState = {...}
+}, 

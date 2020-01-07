@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import isNum from "./utils/isNum";
 import goResultsPage from "./utils/routes/goResultsPage";
 import setSalary from "./utils/setState/setSalary";
-import setSalaryInputError from "./utils/setState/setSalaryInputError";
 import setTaxResults from "./utils/setState/setTaxResults";
 import FormContainer from "../containers/FormContainer";
 import TaxResultsContainer from "../containers/TaxResultsContainer";
@@ -16,7 +14,6 @@ import '../presentational/TotalTax/TotalTaxStyles.less';
 class App extends Component {
   state  = {
     salary: 0,
-    salaryInputError: false,
     taxResults: [],
     taxTiers: [
       {
@@ -50,30 +47,21 @@ class App extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     const inputVal = evt.target.salaryInput.value;
-    const inputIsNotEmpty = inputVal !== '';
-    const inputIsNum = isNum(inputVal);
-
-    if(inputIsNum && inputIsNotEmpty){
-      const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
-      const salarySanitized = parseFloat(inputValSanitized);
-      
-      await setSalary(this, salarySanitized);
-      await setSalaryInputError(this, false);
-      await setTaxResults(this); //salary needs to be set before taxResults
-      goResultsPage(this); //taxResults needs to be set before going to results page
-    } else {
-      setSalaryInputError(this, true);
-    }
+    const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
+    const salarySanitized = parseFloat(inputValSanitized);
+    
+    await setSalary(this, salarySanitized);
+    await setTaxResults(this); //salary needs to be set before taxResults
+    goResultsPage(this); //taxResults needs to be set before going to results page
   }
   render(){
     const { handleSubmit } = this;
-    const { salary, salaryInputError, taxResults, taxTiers } = this.state;
+    const { salary, taxResults, taxTiers } = this.state;
     return (
       <>
         <Route exact path="/">
           <FormContainer 
             handleSubmit={handleSubmit} 
-            salaryInputError={salaryInputError}
           />
         </Route>
         <Route path="/results">

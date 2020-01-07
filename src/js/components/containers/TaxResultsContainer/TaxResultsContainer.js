@@ -18,7 +18,7 @@ const TaxResultsContainer = ({ salary, taxResults }) => {
       <Button 
         className="tax-results__button" 
         text="Go Back" 
-        goBack={goBack}
+        onClick={goBack}
       />
     </div>
   );
