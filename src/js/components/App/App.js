@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import isNum from "./utils/isNum";
-import taxCalculator from "./utils/taxCalculator";
+import goResultsPage from "./utils/routes/goResultsPage";
+import setSalary from "./utils/setState/setSalary";
+import setSalaryInputError from "./utils/setState/setSalaryInputError";
+import setTaxResults from "./utils/setState/setTaxResults";
 import FormContainer from "../containers/FormContainer";
 import TaxResultsContainer from "../containers/TaxResultsContainer";
 import '../containers/FormContainer/formContainerStyles.less';
@@ -11,67 +14,62 @@ import '../presentational/Error/ErrorStyles.less';
 import '../presentational/TotalTax/TotalTaxStyles.less';
 
 class App extends Component {
-  state = {
-    salary: 0,
-    salaryInputError: false,
-    taxResults: [],
-    taxTiers: [
-      {
-        tier: 1,
-        taxRate: 0.15,
-        taxableAmount: 47630,
-      },
-      {
-        tier: 2,
-        taxRate: 0.205,
-        taxableAmount: 47629,
-      },
-      {
-        tier: 3,
-        taxRate: 0.26,
-        taxableAmount: 52408,
-      },
-      {
-        tier: 4,
-        taxRate: 0.29,
-        taxableAmount: 62704,
-      },
-      {
-        tier: 5,
-        taxRate: 0.33,
-        taxableAmount: null,
-      },
-    ],
+  constructor(props){
+    super(props);
+    this.state  = {
+      salary: 0,
+      salaryInputError: false,
+      taxResults: [],
+      taxTiers: [
+        {
+          tier: 1,
+          taxRate: 0.15,
+          taxableAmount: 47630,
+        },
+        {
+          tier: 2,
+          taxRate: 0.205,
+          taxableAmount: 47629,
+        },
+        {
+          tier: 3,
+          taxRate: 0.26,
+          taxableAmount: 52408,
+        },
+        {
+          tier: 4,
+          taxRate: 0.29,
+          taxableAmount: 62704,
+        },
+        {
+          tier: 5,
+          taxRate: 0.33,
+          taxableAmount: null,
+        },
+      ],
+    }
+    this.setSalary = setSalary.bind(this);
+    this.setSalaryInputError = setSalaryInputError.bind(this);
+    this.setTaxResults = setTaxResults.bind(this);
+    this.goResultsPage = goResultsPage.bind(this);
   }
-  goResultsPage = () => {
-    this.props.history.push('/results');
-  }
-  handleSubmit = (evt) => {
+
+  handleSubmit = async (evt) => {
     evt.preventDefault();
     const inputVal = evt.target.salaryInput.value;
     const inputIsNotEmpty = inputVal !== '';
     const inputIsNum = isNum(inputVal);
-    const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
-    const salary = parseFloat(inputValSanitized);
 
     if(inputIsNum && inputIsNotEmpty){
-      this.setState({
-        salary,
-        salaryInputError: false,
-      }, () => {
-        //taxCalculator() requires the 'salary' state before executing
-        const { salary, taxTiers } = this.state;
-        const taxResults = taxCalculator(salary, taxTiers);
-        this.setState({
-          taxResults,
-        })
-      });
-  
-      this.goResultsPage();
+      const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
+      const salarySanitized = parseFloat(inputValSanitized);
+      
+      await this.setSalary(this, salarySanitized);
+      await this.setSalaryInputError(this, false);
+      await this.setTaxResults(this);
+      this.goResultsPage(this);
     } else {
-      this.setState({
-        salaryInputError: true,
-      })
+      this.setSalaryInputError(true);
     }
   }
   render(){
@@ -98,3 +96,8 @@ class App extends Component {
 }
 
 export default withRouter(App);
+
+/**
+ TODO: clear state when clicking 'back'
+ - move setSalaryAndSalaryInputError and setTaxResults to App/utils/setState
+ */

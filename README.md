@@ -40,12 +40,14 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- Move all functions that are used more then once into the '_lib' folder
+Ref: https://medium.com/@Charles_Stover/optimal-file-structure-for-react-applications-f3e35ad0a145
+- Move all functions that are used more then once into the 'components/utils' folder
 - Move JS functions that are used by one component inside that a utils folder inside component folder. ie. 'calcTotalTax.js' -> TotaTax/utils
 - Make sure each function, or class do one thing 'Single Responsibility Principle'
 
+- Next Presentational component folders in side parent container folders and get rid of 'containers and presentational folders'? ie. FormContainer/Input or App/FormContainer, App/TaxResultsContainer if a component is used more than once then put it in components/App/common folder?
 
-- Add Unit Tests for the rest of Utils, add Error testing as well. 
+- Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
 - Add Unit Tests for Components
 - Add LESS prefixer for all browsers
 - Style app
