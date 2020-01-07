@@ -14,40 +14,37 @@ import '../presentational/Error/ErrorStyles.less';
 import '../presentational/TotalTax/TotalTaxStyles.less';
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state  = {
-      salary: 0,
-      salaryInputError: false,
-      taxResults: [],
-      taxTiers: [
-        {
-          tier: 1,
-          taxRate: 0.15,
-          taxableAmount: 47630,
-        },
-        {
-          tier: 2,
-          taxRate: 0.205,
-          taxableAmount: 47629,
-        },
-        {
-          tier: 3,
-          taxRate: 0.26,
-          taxableAmount: 52408,
-        },
-        {
-          tier: 4,
-          taxRate: 0.29,
-          taxableAmount: 62704,
-        },
-        {
-          tier: 5,
-          taxRate: 0.33,
-          taxableAmount: null,
-        },
-      ],
-    }
+  state  = {
+    salary: 0,
+    salaryInputError: false,
+    taxResults: [],
+    taxTiers: [
+      {
+        tier: 1,
+        taxRate: 0.15,
+        taxableAmount: 47630,
+      },
+      {
+        tier: 2,
+        taxRate: 0.205,
+        taxableAmount: 47629,
+      },
+      {
+        tier: 3,
+        taxRate: 0.26,
+        taxableAmount: 52408,
+      },
+      {
+        tier: 4,
+        taxRate: 0.29,
+        taxableAmount: 62704,
+      },
+      {
+        tier: 5,
+        taxRate: 0.33,
+        taxableAmount: null,
+      },
+    ],
   }
 
   handleSubmit = async (evt) => {
@@ -92,8 +89,3 @@ class App extends Component {
 }
 
 export default withRouter(App);
-
-/**
- TODO: clear state when clicking 'back'
- - move setSalaryAndSalaryInputError and setTaxResults to App/utils/setState
- */
