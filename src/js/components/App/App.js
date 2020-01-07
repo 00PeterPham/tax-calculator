@@ -48,10 +48,6 @@ class App extends Component {
         },
       ],
     }
-    this.setSalary = setSalary.bind(this);
-    this.setSalaryInputError = setSalaryInputError.bind(this);
-    this.setTaxResults = setTaxResults.bind(this);
-    this.goResultsPage = goResultsPage.bind(this);
   }
 
   handleSubmit = async (evt) => {
@@ -64,10 +60,10 @@ class App extends Component {
       const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
       const salarySanitized = parseFloat(inputValSanitized);
       
-      await this.setSalary(this, salarySanitized);
-      await this.setSalaryInputError(this, false);
-      await this.setTaxResults(this);
-      this.goResultsPage(this);
+      await setSalary(this, salarySanitized);
+      await setSalaryInputError(this, false);
+      await setTaxResults(this); //salary needs to be set before taxResults
+      goResultsPage(this);
     } else {
       this.setSalaryInputError(true);
     }

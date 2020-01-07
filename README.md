@@ -78,7 +78,7 @@ Fixed Bugs:
 - Added a 'Go Back' button on the Tax Results page. This button and the browser's back button can both me used to navigate back to the previous page (Salary Input Form)
 - Creating a 'componenets/lib' folder to store helper functions for easier testing and better organization
 - Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which component you are working on. However, I did keep an index.js file inside each component folder that needed to be imported as a module make importing cleaner but to also make refactoring or future additions easier. If new files were added, names changed, edited etc.. only the index.js file has to be edited (per component) and not everywhere they are imported
-- 
+- Abstracted setState into seperate functions. ie. setSalary, to clean up App.js and follow 'Single Responsibility Principle', however, by doing so, I've had to pass 'this' (the Class Component Object) to the setState functions. Option: change Class componenet to Functional component and use hooks. ie. useState()
 
 ## Lessons:
 - Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"
