@@ -63,9 +63,9 @@ class App extends Component {
       await setSalary(this, salarySanitized);
       await setSalaryInputError(this, false);
       await setTaxResults(this); //salary needs to be set before taxResults
-      goResultsPage(this);
+      goResultsPage(this); //taxResults needs to be set before going to results page
     } else {
-      this.setSalaryInputError(true);
+      setSalaryInputError(this, true);
     }
   }
   render(){
