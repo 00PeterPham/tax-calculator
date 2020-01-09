@@ -52,7 +52,10 @@ const FormContainer = ({ handleSubmit }) => {
 export default FormContainer;
 
 /**
-  TODO: Abstract methods into ./utils folder
+  TODO: 
+  - Abstract methods into ./utils folder
+  - have valdiationCheck() invoke handleSubmit() instead of submtting form with onSubmit={handleSubmit} ??
+
 
   Adding local state: inputError
   - inputError conditionally renders <Error />
