@@ -1,9 +1,12 @@
 # dependencies
 node_modules
-dist
 
 # production
 build
+dist
+
+# other
+.vscode
 
 
 

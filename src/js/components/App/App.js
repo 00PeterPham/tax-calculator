@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import goResultsPage from "./utils/routes/goResultsPage";
 import setSalary from "./utils/setState/setSalary";
 import setTaxResults from "./utils/setState/setTaxResults";
@@ -58,7 +58,7 @@ class App extends Component {
     const { handleSubmit } = this;
     const { salary, taxResults, taxTiers } = this.state;
     return (
-      <>
+      <Switch>
         <Route exact path="/">
           <FormContainer 
             handleSubmit={handleSubmit} 
@@ -71,9 +71,10 @@ class App extends Component {
             taxResults={taxResults}
           />
         </Route>
-      </>
+      </Switch>
     )
   }
 }
 
 export default withRouter(App);
+

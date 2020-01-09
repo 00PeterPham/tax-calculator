@@ -40,6 +40,8 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
+- Figure out how to set a relative path for the <Router> basename
+
 Ref: https://medium.com/@Charles_Stover/optimal-file-structure-for-react-applications-f3e35ad0a145
 - Move all functions that are used more then once into the 'components/utils' folder
 - Move JS functions that are used by one component inside that a utils folder inside component folder. ie. 'calcTotalTax.js' -> TotaTax/utils
@@ -51,7 +53,7 @@ Ref: https://medium.com/@Charles_Stover/optimal-file-structure-for-react-applica
 - Add Unit Tests for Components
 - Add LESS prefixer for all browsers
 - Style app
-- Figure out how to set defaultProps
+- Create Routing file : https://codeburst.io/getting-started-with-react-router-5c978f70df91
 - Add reload on results page redirect to FormContainer path="/"
 - Run accessibility tests
 - Refactor, restructure folders, move methods to beside componenet index.js file? (Atomic Design?)
@@ -86,3 +88,4 @@ Fixed Bugs:
 - Able to abstract this.setState() from Class component, into imported functions by passing 'this' as an argument to the function. ie. setSalaryState = (component, salary) => {          use: setSalaryState(this, salary)
     component.setState = {...}
 }, 
+- Set basename for <Router> if app is going to be served in a sub directory. ie. <Router basename={"/dist"}>. Issue come from when trying view the build, but it was being served from 127.01.01/dist (dist subfolder)
