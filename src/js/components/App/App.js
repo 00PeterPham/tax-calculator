@@ -5,11 +5,7 @@ import setSalary from "./utils/setState/setSalary";
 import setTaxResults from "./utils/setState/setTaxResults";
 import FormContainer from "../containers/FormContainer";
 import TaxResultsContainer from "../containers/TaxResultsContainer";
-import '../containers/FormContainer/formContainerStyles.less';
-import '../presentational/Input/InputStyles.less'
-import '../presentational/Button/ButtonStyles.less';
-import '../presentational/Error/ErrorStyles.less';
-import '../presentational/TotalTax/TotalTaxStyles.less';
+import './App.less';
 
 class App extends Component {
   state  = {
@@ -45,8 +41,7 @@ class App extends Component {
   }
 
   handleSubmit = async (evt) => {
-    evt.preventDefault();
-    const inputVal = evt.target.salaryInput.value;
+    const inputVal = evt.salaryInput.value;
     const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
     const salarySanitized = parseFloat(inputValSanitized);
     
@@ -77,4 +72,3 @@ class App extends Component {
 }
 
 export default withRouter(App);
-

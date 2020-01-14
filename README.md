@@ -40,19 +40,10 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- Figure out how to set a relative path for the <Router> basename
-
-Ref: https://medium.com/@Charles_Stover/optimal-file-structure-for-react-applications-f3e35ad0a145
-- Move all functions that are used more then once into the 'components/utils' folder
-- Move JS functions that are used by one component inside that a utils folder inside component folder. ie. 'calcTotalTax.js' -> TotaTax/utils
+- Style app
 - Make sure each function, or class do one thing 'Single Responsibility Principle'
-
-- Next Presentational component folders in side parent container folders and get rid of 'containers and presentational folders'? ie. FormContainer/Input or App/FormContainer, App/TaxResultsContainer if a component is used more than once then put it in components/App/common folder?
-
 - Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
 - Add Unit Tests for Components
-- Add LESS prefixer for all browsers
-- Style app
 - Create Routing file : https://codeburst.io/getting-started-with-react-router-5c978f70df91
 - Add reload on results page redirect to FormContainer path="/"
 - Run accessibility tests
@@ -82,6 +73,7 @@ Fixed Bugs:
 - Instead of naming the component file as /componenet-name/index.js to make importing it a bit easier, I decided to name the js file by its component name as well /component-name/component-name.js since working on multiple components, just shows several tabs with the name 'index.js' making it more difficult to quickly identify which component you are working on. However, I did keep an index.js file inside each component folder that needed to be imported as a module make importing cleaner but to also make refactoring or future additions easier. If new files were added, names changed, edited etc.. only the index.js file has to be edited (per component) and not everywhere they are imported
 - Abstracted setState into seperate functions. ie. setSalary, to clean up App.js and follow 'Single Responsibility Principle', however, by doing so, I've had to pass 'this' (the Class Component Object) to the setState functions. Option: change Class componenet to Functional component and use hooks. ie. useState()
 - Kept inputError state local to FormContainer.js, since its only used in FormContainer.js. By doing so, I had to add an onclick event to the <Button /> so that I could validate the input before submitting the form vs submitting the form by clicking the <Button /> by default, and checking the input validation afterwards in App.js
+- appended a 'className' prop to the existing Error and Button Component's classes, so that the parent component that is using it, can add their own className and add additional styles outside of the base styling. ie. className="error-msg salary-form__error-msg"  
 
 ## Lessons:
 - Unable to import module properly using "export default <function name> = () => {...}", instead had to "declare function as a variable first then export variable name. ie. const <function name> = () => {...} export default <function name>"

@@ -1,15 +1,19 @@
 .salary-form {
   align-items: center;
   border-radius: 7px;
-  border: 1px solid #888;
-  box-shadow: -5px 5px #888888;
+  border: 1px solid @colour-primary;
+  box-shadow: -5px 5px @colour-primary;
   display: flex;
   flex-direction: column;
   left: 50%;
   max-width: 500px;
-  padding: 1%;
+  padding: 2%;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+}
+.salary-form__error-msg {
+  bottom: -60px;
+  position: absolute;
 }

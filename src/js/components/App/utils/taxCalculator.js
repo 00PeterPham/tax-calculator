@@ -1,8 +1,6 @@
-import rndNumUp from "./rndNumUp";
+import rndNumUpTwoDecimal from "../../_common/utils/rndNumUpTwoDecimal";
 
 const taxCalculator = (salary, taxTiers) => {
-  // let salary = this.state.salary;
-  // const taxTiers = this.state.taxTiers;
   const taxResults = [];
 
   for (const [index, tier] of taxTiers.entries()){
@@ -18,7 +16,7 @@ const taxCalculator = (salary, taxTiers) => {
         taxTier,
         taxRate,
         taxableAmount: salary,
-        tax: rndNumUp(salary * taxRate),
+        tax: rndNumUpTwoDecimal(salary * taxRate),
       });
       break;
     }else {

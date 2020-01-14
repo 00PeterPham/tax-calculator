@@ -5,7 +5,7 @@ import TaxResultTier from '../../presentational/TaxResultTier';
 import TotalTax from '../../presentational/TotalTax';
 import Button from '../../presentational/Button';
 
-const TaxResultsContainer = ({ salary, taxResults }) => {
+const TaxResultsContainer = ({ salary, taxResults, resetSalary_TaxTiers }) => {
   const history = useHistory();
   const goBack = () => {
     history.goBack();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import isNum from "./utils/isNum";
+import valdiationCheck from "./utils/validationCheck";
 import Input from "../../presentational/Input";
 import Button from "../../presentational/Button";
 import Error from "../../presentational/Error";
@@ -7,37 +7,27 @@ import Error from "../../presentational/Error";
 const FormContainer = ({ handleSubmit }) => {
   const [inputError, setInputError] = useState(false);
 
-  const valdiationCheck = (evt) => {
-    const form_el = evt.target.parentNode;
-    const inputVal = evt.target.parentNode.querySelector('input').value;
-    const inputIsNum = isNum(inputVal);
-    const inputIsNotEmpty = inputVal !== '';
-
-    if(inputIsNum && inputIsNotEmpty){
-      setInputError(false);
-      form_el.dispatchEvent(new Event("submit"));
-    }else {
-      setInputError(true);
-    }
-  }
-
   const handleInputFocus = () => {
     setInputError(false);
   }
 
+  const handleClick = (evt) => {
+    valdiationCheck(evt, setInputError, handleSubmit);
+  }
+
   return (
-    <form className="salary-form" onSubmit={handleSubmit} noValidate>
+    <form className="salary-form" noValidate>
       <Input 
         label="Salary Input"
         text="Please enter your annual salary"
         type="text"
         name="salaryInput"
-        handleInputFocus={handleInputFocus }
+        handleInputFocus={handleInputFocus}
       />
       <Button 
         className="salary-form__button" 
         text="submit" 
-        onClick = {valdiationCheck}
+        onClick = {handleClick}
       />
       {
         inputError && 

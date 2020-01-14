@@ -5,4 +5,4 @@ import App from "./js/components";
 
 const wrapper = document.getElementById("app");
 
-wrapper ? ReactDOM.render(<Router basename={"/dist"}><App /></Router>, wrapper) : false;
+wrapper ? ReactDOM.render(<Router basename={window.location.pathname}><App /></Router>, wrapper) : false;
