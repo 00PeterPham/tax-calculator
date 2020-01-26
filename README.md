@@ -40,6 +40,7 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
+- Add prettier format or js beautify
 - Style app
 - Make sure each function, or class do one thing 'Single Responsibility Principle'
 - Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)

@@ -13,20 +13,20 @@ const TaxResultTier = ({ taxResults }) => {
     return (
       <div key={taxTier} className="tax-results__tier">
         <h2>
-          <span>Tax Tier:</span> 
-          {taxTier}
+          <span className="tax-results__label">Tax Tier:</span> 
+          <span className="tax-results__value">{taxTier}</span>
         </h2>
         <div className="taxRate">
-          <span>Tax Rate:</span> 
-          {taxRate}%
+          <span className="tax-results__label">Tax Rate:</span> 
+          <span className="tax-results__value">{taxRate}%</span>
         </div>
         <div className="tax-results__taxableAmount">
-          <span>Taxed Amount:</span> 
-          {taxableAmount}
+          <span className="tax-results__label">Taxed Amount:</span> 
+          <span className="tax-results__value">{taxableAmount}</span>
         </div>
         <div className="tax">
-          <span>Tax:</span> 
-          {tax}
+          <span className="tax-results__label">Tax:</span> 
+          <span className="tax-results__value">{tax}</span>
         </div>
       </div>
     )
