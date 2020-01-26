@@ -10,5 +10,10 @@ const SalaryTitle = ({ salary }) => {
 SalaryTitle.propTypes = {
   salary: PropTypes.number.isRequired,
 }
+
+SalaryTitle.propTypes = {
+  salary: PropTypes.number.isRequired
+};
+
 export default SalaryTitle;
 
