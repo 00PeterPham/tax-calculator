@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import formatNumber from "../../_common/utils/formatNumber";
-import convertDecimalToPercentage from "../../_common/utils/convertDecimalToPercentage";
+import formatNumber from "../../utils/formatNumber";
+import convertDecimalToPercentage from "../../utils/convertDecimalToPercentage";
 
 const TaxResultTier = ({ taxResults }) => {
   const taxResultsTiersHTML = taxResults.map((taxResult) => {

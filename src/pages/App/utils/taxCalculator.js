@@ -1,4 +1,4 @@
-import rndNumUpTwoDecimal from "../../_common/utils/rndNumUpTwoDecimal";
+import rndNumUpTwoDecimal from "../../../common/utils/rndNumUpTwoDecimal";
 
 const taxCalculator = (salary, taxTiers) => {
   const taxResults = [];
