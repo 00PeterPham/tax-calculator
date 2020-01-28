@@ -46,11 +46,18 @@ class App extends Component {
     const salarySanitized = parseFloat(inputValSanitized);
     
     await setSalary(this, salarySanitized);
-    await setTaxResults(this); //salary needs to be set before taxResults
-    goResultsPage(this); //taxResults needs to be set before going to results page
+    await setTaxResults(this); 
+    goResultsPage(this);
   }
+
+  clearTaxResults = () => {
+    this.setState({
+      taxResults: [],
+    })
+  }
+
   render(){
-    const { handleSubmit } = this;
+    const { handleSubmit, clearTaxResults } = this;
     const { salary, taxResults, taxTiers } = this.state;
     return (
       <Switch>
@@ -64,6 +71,7 @@ class App extends Component {
             salary={salary}
             taxTiers={taxTiers}
             taxResults={taxResults}
+            clearTaxResults={clearTaxResults}
           />
         </Route>
       </Switch>

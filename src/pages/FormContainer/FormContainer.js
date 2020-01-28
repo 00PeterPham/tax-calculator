@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import valdiationCheck from "./utils/validationCheck";
+import isNum from "./utils/isNum";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
@@ -11,15 +11,23 @@ const FormContainer = ({ handleSubmit }) => {
     setInputError(false);
   }
 
-  const handleClick = (evt) => {
-    valdiationCheck(evt, setInputError, handleSubmit);
+  const validationCheck = (evt) => {
+    evt.preventDefault();
+    const form_el = evt.target;
+    const inputVal = form_el.salaryInput.value;
+    const inputIsNum = isNum(inputVal);
+    const inputIsNotEmpty = inputVal !== '';
+  
+    if(inputIsNum && inputIsNotEmpty){
+      setInputError(false);
+      handleSubmit(evt.target);
+    }else {
+      setInputError(true);
+    }
   }
 
   return (
-    <form className="salary-form" 
-    //onSubmit={handleClick} 
-    noValidate
-    >
+    <form className="salary-form" onSubmit={validationCheck} noValidate>
       <Input 
         label="Salary Input"
         text="Please enter your annual salary"
@@ -30,7 +38,6 @@ const FormContainer = ({ handleSubmit }) => {
       <Button 
         className="salary-form__button" 
         text="submit" 
-        onClick = {handleClick}
       />
       {
         inputError && 
