@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./pages";
 
-const wrapper = document.getElementById("app");
-
-wrapper ? ReactDOM.render(<Router basename={window.location.pathname}><App /></Router>, wrapper) : false;
+ReactDOM.render(
+  <Router basename={window.location.pathname}>
+    <App />
+  </Router>, 
+  document.getElementById("app")
+);

@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import SalaryTitle from '../../common/components/SalaryTitle';
-import TaxResultTier from '../../common/components/TaxResultTier';
-import TotalTax from '../../common/components/TotalTax';
-import Button from '../../common/components/Button';
+import SalaryTitle from '../../components/SalaryTitle';
+import TaxResultTier from '../../components/TaxResultTier';
+import TotalTax from '../../components/TotalTax';
+import Button from '../../components/Button';
 
 const TaxResultsContainer = ({ salary, taxResults, resetSalary_TaxTiers }) => {
   const history = useHistory();

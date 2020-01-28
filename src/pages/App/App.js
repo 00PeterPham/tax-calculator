@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import goResultsPage from "./utils/routes/goResultsPage";
 import setSalary from "./utils/setState/setSalary";
 import setTaxResults from "./utils/setState/setTaxResults";
-import Form from "../../pages/Form";
+import FormContainer from "../../pages/FormContainer";
 import TaxResultsContainer from "../../pages/TaxResultsContainer";
 import './App.less';
 
@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/">
-          <Form 
+          <FormContainer 
             handleSubmit={handleSubmit} 
           />
         </Route>

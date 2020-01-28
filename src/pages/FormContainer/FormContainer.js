@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import valdiationCheck from "./utils/validationCheck";
-import Input from "../../common/components/Input";
-import Button from "../../common/components/Button";
-import Error from "../../common/components/Error";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import Error from "../../components/Error";
 
-const Form = ({ handleSubmit }) => {
+const FormContainer = ({ handleSubmit }) => {
   const [inputError, setInputError] = useState(false);
 
   const handleInputFocus = () => {
@@ -16,7 +16,10 @@ const Form = ({ handleSubmit }) => {
   }
 
   return (
-    <form className="salary-form" noValidate>
+    <form className="salary-form" 
+    //onSubmit={handleClick} 
+    noValidate
+    >
       <Input 
         label="Salary Input"
         text="Please enter your annual salary"
@@ -39,4 +42,4 @@ const Form = ({ handleSubmit }) => {
     </form>
   )
 };
-export default Form;
+export default FormContainer;
