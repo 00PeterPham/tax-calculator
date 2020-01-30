@@ -2,42 +2,41 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import calcTotalTax from "./calculators/calcTotalTax";
 import taxCalculator from "./calculators/taxCalculator";
-import SalaryTitle from '../../components/SalaryTitle';
-import TaxResultTier from '../../components/TaxResultTier';
-import TotalTax from '../../components/TotalTax';
 import Button from '../../components/Button';
+import Heading from '../../components/Heading';
+import TaxBracket from '../../components/TaxBracket';
 
 
 const TaxResultsContainer = ({ salary }) => {
   const history = useHistory();
-  const taxTiers = [
+  const taxBrackets = [
     {
-      tier: 1,
+      taxBracket: 1,
       taxRate: 0.15,
-      taxableAmount: 47630,
+      baseAmount: 47630,
     },
     {
-      tier: 2,
+      taxBracket: 2,
       taxRate: 0.205,
-      taxableAmount: 47629,
+      baseAmount: 47629,
     },
     {
-      tier: 3,
+      taxBracket: 3,
       taxRate: 0.26,
-      taxableAmount: 52408,
+      baseAmount: 52408,
     },
     {
-      tier: 4,
+      taxBracket: 4,
       taxRate: 0.29,
-      taxableAmount: 62704,
+      baseAmount: 62704,
     },
     {
-      tier: 5,
+      taxBracket: 5,
       taxRate: 0.33,
-      taxableAmount: null,
+      baseAmount: null,
     },
   ];
-  const taxResults = taxCalculator(salary, taxTiers);
+  const taxResults = taxCalculator(salary, taxBrackets);
   const totalTax = calcTotalTax(taxResults);
   
   const goBack = () => {
@@ -46,9 +45,10 @@ const TaxResultsContainer = ({ salary }) => {
 
   return (
     <div className="tax-results"> 
-      <SalaryTitle salary={salary} />
-      <TaxResultTier taxResults={taxResults} />
-      <TotalTax totalTax={totalTax} />
+      <h1>Federal Income Tax Rates</h1>
+      <Heading text="Salary" number={salary} />
+      <TaxBracket taxResults={taxResults} />
+      <Heading text="Total Tax" number={totalTax} />
       <Button 
         className="tax-results__button" 
         text="Go Back" 

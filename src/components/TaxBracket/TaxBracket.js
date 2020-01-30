@@ -3,26 +3,26 @@ import PropTypes from "prop-types";
 import formatNumber from "../../utils/formatNumber";
 import convertDecimalToPercentage from "../../utils/convertDecimalToPercentage";
 
-const TaxResultTier = ({ taxResults }) => {
+const TaxBracket = ({ taxResults }) => {
   const taxResultsTiersHTML = taxResults.map((taxResult) => {
-    const taxTier = taxResult.taxTier;
+    const taxBracket = taxResult.taxBracket;
     const taxRate = convertDecimalToPercentage(taxResult.taxRate);
-    const taxableAmount = formatNumber(taxResult.taxableAmount);
+    const baseAmount = formatNumber(taxResult.baseAmount);
     const tax = formatNumber(taxResult.tax);
 
     return (
-      <div key={taxTier} className="tax-results__tier">
-        <h2>
-          <span className="tax-results__label">Tax Tier:</span> 
-          <span className="tax-results__value">{taxTier}</span>
-        </h2>
+      <div key={taxRate} className="tax-results__tax-bracket">
+        <h3>
+          <span className="tax-results__label">Tax Bracket:</span> 
+          <span className="tax-results__value">{taxBracket}</span>
+        </h3>
         <div className="taxRate">
           <span className="tax-results__label">Tax Rate:</span> 
           <span className="tax-results__value">{taxRate}%</span>
         </div>
-        <div className="tax-results__taxableAmount">
-          <span className="tax-results__label">Taxed Amount:</span> 
-          <span className="tax-results__value">{taxableAmount}</span>
+        <div className="tax-results__baseAmount">
+          <span className="tax-results__label">Base Amount:</span> 
+          <span className="tax-results__value">{baseAmount}</span>
         </div>
         <div className="tax">
           <span className="tax-results__label">Tax:</span> 
@@ -38,12 +38,7 @@ const TaxResultTier = ({ taxResults }) => {
     </>
   )
 }
-TaxResultTier.propTypes = {
+TaxBracket.propTypes = {
   taxResults: PropTypes.array.isRequired
 };
-export default TaxResultTier;
-
-/**
- TODO:
-  - Break the <div>'s down into a seperate presentational component? similar to the Input.jsx, and map through it?
- */
+export default TaxBracket;

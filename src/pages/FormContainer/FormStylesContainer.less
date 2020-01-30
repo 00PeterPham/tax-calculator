@@ -1,4 +1,10 @@
-.salary-form {
+.salary-form__container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.salary-form__form {
   align-items: center;
   border-radius: 7px;
   border: 1px solid @colour-primary;
@@ -8,10 +14,9 @@
   left: 50%;
   max-width: 500px;
   padding: 2%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
+}
+.salary-form__button {
+  border-radius: 5px;
 }
 .salary-form__error-msg {
   bottom: -60px;

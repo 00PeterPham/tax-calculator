@@ -1,8 +1,14 @@
 .tax-results {
+  animation: fadein 2s;
   width: 50%;
   margin: 0 auto;
 
   @media(max-width: @screen-sml){
     width: 90%;
   }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

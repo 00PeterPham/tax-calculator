@@ -1,35 +1,37 @@
 import rndNumUpTwoDecimal from "../../../utils/rndNumUpTwoDecimal";
 
-const taxCalculator = (salary, taxTiers) => {
+const taxCalculator = (salary, taxBrackets) => {
   const taxResults = [];
+  let remainingSalary = salary;
 
   if(salary < 0){
     console.log("Error: salary cannot be a negative value");
     return [];
   }
 
-  for (const [index, tier] of taxTiers.entries()){
-    const taxTier = tier.tier;
-    const taxRate = tier.taxRate;
-    const taxableAmount = tier.taxableAmount;
-    const salaryLessThanTaxableAmnt = (index === taxTiers.length - 1) ? true : (salary <= taxableAmount);
+  for (const [index, _taxBracket] of taxBrackets.entries()){
+    const taxBracket = _taxBracket.taxBracket;
+    const taxRate = _taxBracket.taxRate;
+    const baseAmount = _taxBracket.baseAmount;
+    const lastTaxBracket = (index === taxBrackets.length - 1);
+    const salaryLessThanTaxableAmnt = (remainingSalary <= baseAmount);
       
-    if(salaryLessThanTaxableAmnt){
+    if(lastTaxBracket || salaryLessThanTaxableAmnt){
       taxResults.push({
-        taxTier,
+        taxBracket,
         taxRate,
-        taxableAmount: salary,
-        tax: rndNumUpTwoDecimal(salary * taxRate),
+        baseAmount: remainingSalary,
+        tax: rndNumUpTwoDecimal(remainingSalary * taxRate),
       });
       break;
     }else {
       taxResults.push({
-        taxTier,
+        taxBracket,
         taxRate,
-        taxableAmount,
-        tax: (taxableAmount * taxRate),
+        baseAmount,
+        tax: (baseAmount * taxRate),
       }); 
-      salary = (salary - taxableAmount);
+      remainingSalary = (remainingSalary - baseAmount);
     }
   }
   return taxResults;

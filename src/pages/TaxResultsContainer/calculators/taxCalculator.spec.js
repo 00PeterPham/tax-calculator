@@ -3,7 +3,7 @@ import taxCalculator from './taxCalculator';
 describe('taxCalculator', () => {
   test('Checks if correct taxResults is given for first tier at salary amount of 47600', () => {
     const salary = 47600;
-    const taxTiers = [
+    const taxRates = [
       {
         tier: 1,
         taxRate: 0.15,
@@ -14,21 +14,21 @@ describe('taxCalculator', () => {
       {
         tax: 7140, 
         taxRate: 0.15,
-        taxTier: 1,
+        taxRate: 1,
         taxableAmount: 47600,
       }
     ]
-    expect(taxCalculator(salary, taxTiers)).toStrictEqual(expectedOutput);
+    expect(taxCalculator(salary, taxRates)).toStrictEqual(expectedOutput);
   });
   test('Returns error if salary is Negative', () => {
     const salary = -100;
-    const taxTiers = [
+    const taxRates = [
       {
         tier: 1,
         taxRate: 0.15,
         taxableAmount: 47630,
       }
     ]
-    expect(taxCalculator(salary, taxTiers)).toStrictEqual([]);
+    expect(taxCalculator(salary, taxRates)).toStrictEqual([]);
   })
 });
