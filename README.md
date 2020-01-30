@@ -40,15 +40,20 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
+- use tax terms from the assignment for vars etc...
+- Remove derived states from the state and into a data structure. ie. taxResults 
+  - This will help reduce the amount of methods in the App.js file
+- Change App.js file to routing file
+
 - Add prettier format or js beautify
-- Style app
-- Make sure each function, or class do one thing 'Single Responsibility Principle'
 - Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
 - Add Unit Tests for Components
 - Create Routing file : https://codeburst.io/getting-started-with-react-router-5c978f70df91
 - Add reload on results page redirect to FormContainer path="/"
 - Run accessibility tests
 - Refactor, restructure folders, move methods to beside componenet index.js file? (Atomic Design?)
+- Refactor README.md "end with /n"
+- Style app
 
 ## Dev Planning:
 - If salary is <= taxBracket then calculate tax using that taxRate
@@ -82,3 +87,4 @@ Fixed Bugs:
     component.setState = {...}
 }, 
 - Set basename for <Router> if app is going to be served in a sub directory. ie. <Router basename={"/dist"}>. Issue come from when trying view the build, but it was being served from 127.01.01/dist (dist subfolder)
+- When setting state based on the previous state, pass setState() a function with the previous state as an argument. ie. this.setState(prevState => ({ expanded: !prevState.expanded }))

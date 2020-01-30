@@ -1,4 +1,4 @@
-import isNum from "../isNum";
+import isNum from "./isNum";
 
 describe('isNum', () => {
   test('Checks if string is number, and only contains digits, commas and decimals', () => {

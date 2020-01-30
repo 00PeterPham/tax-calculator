@@ -1,4 +1,4 @@
-import calcTotalTax from '../calcTotalTax'
+import calcTotalTax from './calcTotalTax'
 
 describe('calcTotalTax', () => {
   test('Adds all of the calculated tax for each tier together', () => {

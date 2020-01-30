@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
-import goResultsPage from "./utils/routes/goResultsPage";
-import setSalary from "./utils/setState/setSalary";
-import setTaxResults from "./utils/setState/setTaxResults";
 import FormContainer from "../../pages/FormContainer";
 import TaxResultsContainer from "../../pages/TaxResultsContainer";
 import './App.less';
@@ -10,8 +7,35 @@ import './App.less';
 class App extends Component {
   state  = {
     salary: 0,
-    taxResults: [],
-    taxTiers: [
+  }
+
+  clearTaxResults = () => {
+    this.setState({
+      taxResults: [],
+    })
+  }
+  setSalary = (salary) => {
+    this.setState({
+      salary,
+    })
+  }
+  goResultsPage = () => {
+    this.props.history.push('/results');
+  }
+  handleSubmit = async (evt) => {
+    const inputVal = evt.salaryInput.value;
+    const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
+    const salarySanitized = parseFloat(inputValSanitized);
+    
+    await this.setSalary(salarySanitized);
+    this.goResultsPage();
+  }
+
+
+  render(){
+    const { handleSubmit, clearTaxResults } = this;
+    const { salary } = this.state;
+    const taxTiers = [
       {
         tier: 1,
         taxRate: 0.15,
@@ -37,28 +61,7 @@ class App extends Component {
         taxRate: 0.33,
         taxableAmount: null,
       },
-    ],
-  }
-
-  handleSubmit = async (evt) => {
-    const inputVal = evt.salaryInput.value;
-    const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
-    const salarySanitized = parseFloat(inputValSanitized);
-    
-    await setSalary(this, salarySanitized);
-    await setTaxResults(this); 
-    goResultsPage(this);
-  }
-
-  clearTaxResults = () => {
-    this.setState({
-      taxResults: [],
-    })
-  }
-
-  render(){
-    const { handleSubmit, clearTaxResults } = this;
-    const { salary, taxResults, taxTiers } = this.state;
+    ];
     return (
       <Switch>
         <Route exact path="/">
@@ -70,7 +73,6 @@ class App extends Component {
           <TaxResultsContainer 
             salary={salary}
             taxTiers={taxTiers}
-            taxResults={taxResults}
             clearTaxResults={clearTaxResults}
           />
         </Route>

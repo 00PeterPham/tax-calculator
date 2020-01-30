@@ -1,4 +1,4 @@
-import rndNumUpTwoDecimal from '../rndNumUpTwoDecimal'
+import rndNumUpTwoDecimal from './rndNumUpTwoDecimal'
 
 describe('rndNumUpTwoDecimal', () => {
   test('Rounds Numbers up to 2 decimal places', () => {
