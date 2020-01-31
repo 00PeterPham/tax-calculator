@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
 
 const FormContainer = ({ handleSubmit }) => {
   const [inputError, setInputError] = useState(false);
-  const history = useHistory();
 
   const handleInputFocus = () => {
     setInputError(false);
@@ -22,7 +20,6 @@ const FormContainer = ({ handleSubmit }) => {
     if(inputIsNum && inputIsNotEmpty){
       setInputError(false);
       handleSubmit(evt.target);
-      history.push('/results'); //Need to check if salary state has been set before going to /results page
     }else {
       setInputError(true);
     }

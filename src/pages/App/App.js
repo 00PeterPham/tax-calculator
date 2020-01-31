@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import Form from "../../pages/Form";
 import TaxResults from "../../pages/TaxResults";
 import './App.less';
@@ -20,7 +20,7 @@ class App extends Component {
     this.setState({
       salary,
     }, 
-      //this.goResultsPage()
+      this.goResultsPage()
     );
   }
 
@@ -28,18 +28,14 @@ class App extends Component {
     const { handleSubmit } = this;
     const { salary } = this.state;
     return (
-      <Switch>
+      <>
         <Route exact path="/">
-          <Form 
-            handleSubmit={handleSubmit} 
-          />
+          <Form handleSubmit={handleSubmit} />
         </Route>
         <Route path="/results">
-          <TaxResults 
-            salary={salary}
-          />
+          <TaxResults salary={salary} />
         </Route>
-      </Switch>
+      </>
     )
   }
 }
