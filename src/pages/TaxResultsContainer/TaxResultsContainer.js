@@ -43,7 +43,7 @@ const TaxResultsContainer = ({ salary }) => {
   }
 
   const renderTaxBrackets = taxResults.map((taxResult) => (
-     <TaxBracket taxResult={taxResult} />
+     <TaxBracket key={taxResult.taxBracket} taxResult={taxResult} />
   ));
 
   return (

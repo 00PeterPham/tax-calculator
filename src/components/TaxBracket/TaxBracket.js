@@ -34,6 +34,6 @@ const TaxBracket = ({ taxResult }) => {
   )
 }
 TaxBracket.propTypes = {
-  taxResults: PropTypes.array.isRequired
+  taxResult: PropTypes.object.isRequired
 };
 export default TaxBracket;
