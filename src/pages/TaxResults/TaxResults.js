@@ -6,7 +6,7 @@ import taxCalculator from "./calculators/taxCalculator";
 import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';
 
-const TaxResultsContainer = ({ salary }) => {
+const TaxResults = ({ salary }) => {
   const history = useHistory();
   const taxBrackets = [
     {
@@ -62,4 +62,4 @@ const TaxResultsContainer = ({ salary }) => {
     </div>
   );
 }
-export default TaxResultsContainer;
+export default TaxResults;

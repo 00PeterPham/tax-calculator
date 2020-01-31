@@ -43,10 +43,9 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 - find a better name for TextValue.js component or don't make it a component
 - use tax terms from the assignment for vars etc...
 
-- Keep FormContainer/utils?
-- Convert utils folder to utils.js file and export by name?
-
 - Change App.js file to routing file
+- Find out better way to redirect page after form submit. <Redirect /> ? *** - IN PROGRESS
+
 - Add prettier format or js beautify
 - Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
 - Add Unit Tests for Components
