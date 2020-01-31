@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import formatNumber from "../../utils/formatNumber";
-import convertDecimalToPercentage from "../../utils/convertDecimalToPercentage";
+import { formatNumber } from "../../utils";
+
+const convertDecimalToPercentage = (num) => {
+  return (Math.round((num*100)*10)/10);
+}
 
 const TaxBracket = ({ taxResult }) => {
   const taxBracket = taxResult.taxBracket;
