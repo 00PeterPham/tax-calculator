@@ -1,11 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import calcTotalTax from "./calculators/calcTotalTax";
+import formatNumber from "../../utils/formatNumber";
 import taxCalculator from "./calculators/taxCalculator";
 import Button from '../../components/Button';
-import Heading from '../../components/Heading';
 import TaxBracket from '../../components/TaxBracket';
-
 
 const TaxResultsContainer = ({ salary }) => {
   const history = useHistory();
@@ -43,12 +42,18 @@ const TaxResultsContainer = ({ salary }) => {
     history.goBack();
   }
 
+  const renderTaxBrackets = taxResults.map((taxResult) => (
+     <TaxBracket taxResult={taxResult} />
+  ));
+
   return (
     <div className="tax-results"> 
       <h1>Federal Income Tax Rates</h1>
-      <Heading text="Salary" number={salary} />
-      <TaxBracket taxResults={taxResults} />
-      <Heading text="Total Tax" number={totalTax} />
+      <h2>Salary: ${formatNumber(salary)}</h2>
+      {renderTaxBrackets}
+      <div className="tax-results__total-tax">
+        Total Tax: ${formatNumber(totalTax)}
+      </div>
       <Button 
         className="tax-results__button" 
         text="Go Back" 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import isNum from "./utils/isNum";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
@@ -15,7 +14,7 @@ const FormContainer = ({ handleSubmit }) => {
     evt.preventDefault();
     const form_el = evt.target;
     const inputVal = form_el.salaryInput.value;
-    const inputIsNum = isNum(inputVal);
+    const inputIsNum = /^[0-9,.]*$/.test(inputVal);
     const inputIsNotEmpty = inputVal !== '';
   
     if(inputIsNum && inputIsNotEmpty){

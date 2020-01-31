@@ -40,8 +40,9 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- find a better name for Heading.js component
+- find a better name for TextValue.js component or don't make it a component
 - use tax terms from the assignment for vars etc...
+- Keep FormContainer/utils?
 - Change App.js file to routing file
 - Add prettier format or js beautify
 - Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
