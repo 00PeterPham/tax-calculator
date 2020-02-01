@@ -1,8 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import calcTotalTax from "./calculators/calcTotalTax";
+import { calcTotalTax, taxCalculator } from "./calculators.js";
 import { formatNumber } from "../../utils";
-import taxCalculator from "./calculators/taxCalculator";
 import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';
 

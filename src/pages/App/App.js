@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
+import { sanitize } from "./sanitize.js";
 import Form from "../../pages/Form";
 import TaxResults from "../../pages/TaxResults";
 import './App.less';
@@ -14,8 +15,7 @@ class App extends Component {
   }
   handleSubmit = (evt) => {
     const inputVal = evt.salaryInput.value;
-    const inputValSanitized = inputVal.replace(/[^0-9.-]+/g, '');
-    const salary = parseFloat(inputValSanitized);
+    const salary = sanitize(inputVal);
     
     this.setState({
       salary,

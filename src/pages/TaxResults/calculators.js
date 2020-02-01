@@ -1,14 +1,26 @@
-const rndNumUpTwoDecimal = (num) => {
+export const rndNumUpTwoDecimal = (num) => {
   return (Math.round((num)*100)/100);
 }
 
-const taxCalculator = (salary, taxBrackets) => {
+export const calcTotalTax = (taxResults) => {
+  try {
+    return taxResults.reduce((total, taxResult) => {
+      if(isNaN(taxResult.tax)) throw `${taxResult.tax} is not a number`
+      return total + taxResult.tax;
+    }, 0)
+  }
+  catch(err){
+    console.log(`Error: ${err}`);
+    return null
+  }
+}
+
+export const taxCalculator = (salary, taxBrackets) => {
   const taxResults = [];
   let remainingSalary = salary;
 
-  if(salary < 0){
-    console.log("Error: salary cannot be a negative value");
-    return [];
+  if( salary < 0 || isNaN(salary)){
+    return null;
   }
 
   for (const [index, _taxBracket] of taxBrackets.entries()){
@@ -38,5 +50,3 @@ const taxCalculator = (salary, taxBrackets) => {
   }
   return taxResults;
 }
-
-export default taxCalculator;

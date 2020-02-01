@@ -3,6 +3,10 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
 
+const isNum = (val) => {
+  return /^[0-9,.]*$/.test(val)
+}
+
 const FormContainer = ({ handleSubmit }) => {
   const [inputError, setInputError] = useState(false);
 
@@ -14,7 +18,7 @@ const FormContainer = ({ handleSubmit }) => {
     evt.preventDefault();
     const form_el = evt.target;
     const inputVal = form_el.salaryInput.value;
-    const inputIsNum = /^[0-9,.]*$/.test(inputVal);
+    const inputIsNum = isNum(inputVal); //Move this into a function and export to test?
     const inputIsNotEmpty = inputVal !== '';
   
     if(inputIsNum && inputIsNotEmpty){
