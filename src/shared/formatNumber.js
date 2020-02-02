@@ -1,6 +1,5 @@
 export const formatNumber = num => {
   if (typeof num === 'string') {
-    console.error('Error: Cannot format string. Must be a number');
     return null;
   }
   return num

@@ -43,7 +43,6 @@ export const calcTotalTax = taxResults => {
   }, 0);
 
   if (typeof sumTax === 'string') {
-    console.error(`Cannot calculate total tax from string. "${sumTax}" Must be a number`);
     return null;
   }
   return sumTax;
