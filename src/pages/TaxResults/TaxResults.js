@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { calcTotalTax, taxCalculator } from "./calculators.js";
+import { calcTotalTax, taxCalculator } from "./logic/calculators.js";
 import { formatNumber } from "../../utils";
 import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';

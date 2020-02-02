@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import { sanitize } from "./sanitize.js";
+import { sanitize } from "./logic/sanitize.js";
 import Form from "../../pages/Form";
 import TaxResults from "../../pages/TaxResults";
 import './App.less';

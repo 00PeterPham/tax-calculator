@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isNum } from "./isNum";
+import { isInvalid } from "./logic/isInvalid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
@@ -14,15 +14,13 @@ const FormContainer = ({ handleSubmit }) => {
   const validationCheck = (evt) => {
     evt.preventDefault();
     const form_el = evt.target;
-    const inputVal = form_el.salaryInput.value;
-    const inputIsNum = isNum(inputVal);
-    const inputIsNotEmpty = inputVal !== '';
-  
-    if(inputIsNum && inputIsNotEmpty){
+    const val = form_el.salaryInput.value;
+
+    if(isInvalid(val)){
+      setInputError(true);
+    }else {
       setInputError(false);
       handleSubmit(evt.target);
-    }else {
-      setInputError(true);
     }
   }
 

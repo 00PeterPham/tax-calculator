@@ -1,14 +1,16 @@
-import { isNum } from "./isNum";
+import { isInvalid } from "./isInvalid";
 
-describe('isNum', () => {
+describe('isInvalid', () => {
   describe('given valid number', () => {
     test('Checks if string consists of numbers, commas and a decimal', () => {
-      expect(isNum("100,000.00")).toBe(true);
+      expect(isInvalid("100,000.00")).toBe(true);
     });
   });
   describe('given invalid number', () => {
     test('Return null if tax value is not a number', () => {
-      expect(isNum("AB100,000.00")).toBe(false);
+      expect(isInvalid("AB100,000.00")).toBe(false);
     });
   });
 })
+
+//TO DO: Rework
