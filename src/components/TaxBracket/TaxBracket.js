@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatNumber } from '../../utils';
-
-const convertDecimalToPercentage = num => {
-  return Math.round(num * 100 * 10) / 10;
-};
+import { convertDecimalToPercentage } from './logic/convertDecimalToPercentage';
+import { formatNumber } from '../../shared/formatNumber';
 
 const TaxBracket = ({ taxResult }) => {
-  const taxBracket = taxResult.taxBracket;
-  const taxRate = convertDecimalToPercentage(taxResult.taxRate);
-  const baseAmount = formatNumber(taxResult.baseAmount);
-  const tax = formatNumber(taxResult.tax);
+  const { baseAmount, tax, taxRate, taxBracket } = taxResult;
 
   return (
     <div key={taxRate} className="tax-results__tax-bracket">
@@ -20,15 +14,15 @@ const TaxBracket = ({ taxResult }) => {
       </h3>
       <div className="taxRate">
         <span className="tax-results__label">Tax Rate:</span>
-        <span className="tax-results__value">{taxRate}%</span>
+        <span className="tax-results__value">{convertDecimalToPercentage(taxRate)}%</span>
       </div>
       <div className="tax-results__baseAmount">
         <span className="tax-results__label">Base Amount:</span>
-        <span className="tax-results__value">{baseAmount}</span>
+        <span className="tax-results__value">{formatNumber(baseAmount)}</span>
       </div>
       <div className="tax">
         <span className="tax-results__label">Tax:</span>
-        <span className="tax-results__value">{tax}</span>
+        <span className="tax-results__value">{formatNumber(tax)}</span>
       </div>
     </div>
   );

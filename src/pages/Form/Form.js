@@ -38,7 +38,7 @@ const FormContainer = ({ handleSubmit }) => {
         {inputError && (
           <Error
             className="salary-form__error-msg"
-            text="Please enter a valid number format. It can contain numbers, commas, and a decimal. ie. 150,000.75"
+            text="Please enter a valid number format. It can contain numbers, commas, and a decimal. It must also be less than 1e+19 and greater than 0."
           />
         )}
       </form>

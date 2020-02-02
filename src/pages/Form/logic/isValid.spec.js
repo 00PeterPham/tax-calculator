@@ -18,5 +18,3 @@ describe('isInvalid', () => {
     });
   });
 });
-
-//TO DO: Rework

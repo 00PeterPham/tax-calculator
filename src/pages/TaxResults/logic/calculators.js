@@ -2,18 +2,6 @@ export const rndNumUpTwoDecimal = num => {
   return Math.round(num * 100) / 100;
 };
 
-export const calcTotalTax = taxResults => {
-  try {
-    return taxResults.reduce((total, taxResult) => {
-      if (isNaN(taxResult.tax)) throw `${taxResult.tax} is not a number`;
-      return total + taxResult.tax;
-    }, 0);
-  } catch (err) {
-    console.log(`Error: ${err}`);
-    return null;
-  }
-};
-
 export const taxCalculator = (salary, taxBrackets) => {
   const taxResults = [];
   let remainingSalary = salary;
@@ -23,13 +11,11 @@ export const taxCalculator = (salary, taxBrackets) => {
   }
 
   for (const [index, _taxBracket] of taxBrackets.entries()) {
-    const taxBracket = _taxBracket.taxBracket;
-    const taxRate = _taxBracket.taxRate;
-    const baseAmount = _taxBracket.baseAmount;
+    const { baseAmount, taxBracket, taxRate } = _taxBracket;
     const lastTaxBracket = index === taxBrackets.length - 1;
-    const salaryLessThanTaxableAmnt = remainingSalary <= baseAmount;
+    const salaryLessThanBaseAmnt = remainingSalary <= baseAmount;
 
-    if (lastTaxBracket || salaryLessThanTaxableAmnt) {
+    if (lastTaxBracket || salaryLessThanBaseAmnt) {
       taxResults.push({
         taxBracket,
         taxRate,
@@ -48,4 +34,17 @@ export const taxCalculator = (salary, taxBrackets) => {
     }
   }
   return taxResults;
+};
+
+export const calcTotalTax = taxResults => {
+  const sumTax = taxResults.reduce((total, taxResult) => {
+    const tax = taxResult.tax;
+    return total + tax;
+  }, 0);
+
+  if (typeof sumTax === 'string') {
+    console.error(`Cannot calculate total tax from string. "${sumTax}" Must be a number`);
+    return null;
+  }
+  return sumTax;
 };
