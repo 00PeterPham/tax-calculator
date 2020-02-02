@@ -1,4 +1,4 @@
-export const isInvalid = (val) => {
+export const isValid = (val) => {
   const isEmpty = val === '';
   const hasLettersOrSpecialChars = /^(?![0-9,.]*$)/.test(val);
   const numberOfDecimals = (val.match(/\./g) || []).length;
@@ -6,10 +6,10 @@ export const isInvalid = (val) => {
   if(
       isEmpty || 
       hasLettersOrSpecialChars || 
-      numberOfDecimals
+      numberOfDecimals > 1
   ){
-    return true;
+    return false;
   }
 
-  return false;
+  return true;
 }

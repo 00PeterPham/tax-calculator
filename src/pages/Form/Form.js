@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isInvalid } from "./logic/isInvalid";
+import { isValid } from "./logic/isValid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
@@ -16,7 +16,7 @@ const FormContainer = ({ handleSubmit }) => {
     const form_el = evt.target;
     const val = form_el.salaryInput.value;
 
-    if(isInvalid(val)){
+    if(!isValid(val)){
       setInputError(true);
     }else {
       setInputError(false);
