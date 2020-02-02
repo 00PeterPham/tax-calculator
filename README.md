@@ -40,9 +40,6 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 * Include unit tests.
 
 ## TO DO:
-- find a better name for TextValue.js component or don't make it a component
-- use tax terms from the assignment for vars etc...
-
 - Change App.js file to routing file
 - Find out better way to redirect page after form submit. <Redirect /> ? *** - IN PROGRESS
 
@@ -51,8 +48,7 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 - Add Unit Tests for Components
 - Create Routing file : https://codeburst.io/getting-started-with-react-router-5c978f70df91
 - Add reload on results page redirect to FormContainer path="/"
-- Run accessibility tests
-- Refactor, restructure folders, move methods to beside componenet index.js file? (Atomic Design?)
+
 - Refactor README.md "end with /n"
 - Style app
 

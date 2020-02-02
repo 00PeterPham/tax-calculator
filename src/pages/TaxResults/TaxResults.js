@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';
 
 const TaxResults = ({ salary }) => {
-  const history = useHistory();
   const taxBrackets = [
     {
       taxBracket: 1,
@@ -36,6 +35,7 @@ const TaxResults = ({ salary }) => {
   ];
   const taxResults = taxCalculator(salary, taxBrackets);
   const totalTax = calcTotalTax(taxResults);
+  const history = useHistory();
   
   const goBack = () => {
     history.goBack();
