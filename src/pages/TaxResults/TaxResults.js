@@ -48,16 +48,18 @@ const TaxResults = ({ salary }) => {
   return (
     <div className="tax-results"> 
       <h1>Federal Income Tax Rates</h1>
-      <h2>Salary: ${formatNumber(salary)}</h2>
-      {renderTaxBrackets}
-      <div className="tax-results__total-tax">
-        Total Tax: ${formatNumber(totalTax)}
+      <div className="tax-results__container">
+        <h2>Salary: ${formatNumber(salary)}</h2>
+        {renderTaxBrackets}
+        <div className="tax-results__total-tax">
+          Total Tax: ${formatNumber(totalTax)}
+        </div>
+        <Button 
+          className="tax-results__button" 
+          text="Go Back" 
+          onClick={goBack}
+        />
       </div>
-      <Button 
-        className="tax-results__button" 
-        text="Go Back" 
-        onClick={goBack}
-      />
     </div>
   );
 }

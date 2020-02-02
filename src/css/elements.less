@@ -1,5 +1,17 @@
 body {
+  background-color: @colour-primary;
   font-family: @font-main;
+}
+h1 {
+  color: @colour-primary;
+  font-size: 30px;
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media(max-width: @screen-mobile-medium){
+    font-size: 4vw;
+  }
 }
 h2 {
   font-size: 25px;
@@ -9,4 +21,13 @@ h2 {
 }
 h3 {
   margin: 0 0 10px;
+}
+.BgContainerStyles {
+  background-color: #fff;
+  padding: 40px;
+  width: 50%;
+
+  @media(max-width: @screen-mobile-medium){
+    width: 80%;
+  }
 }

@@ -1,16 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ label, text, type, name, handleInputFocus  }) => (
+const Input = ({ text, type, name, handleInputFocus  }) => (
   <>
-    <label className="salary-form__label" htmlFor={label}>{text}</label>
+    <label className="salary-form__label" htmlFor={name}>{text}</label>
     <div className="salary-form__input-wrapper">
-      {"$"}
+      <span className="salary-form__symbol">$</span>
       <input
         type={type}
         className="salary-form__input"
-        name={name}
-        required
+        id={name}
         onFocus={handleInputFocus}
       />
     </div>

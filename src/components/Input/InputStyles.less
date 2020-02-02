@@ -1,14 +1,26 @@
 .salary-form__label,
 .salary-form__input-wrapper {
-  margin-bottom: 2%;
+  margin-bottom: 5%;
+}
+.salary-form__input-wrapper {
+  align-items: center;
+  display: flex;
+  width: 50%;
+
+  @media(max-width: @screen-sml){
+    width: unset;
+  }
 }
 .salary-form__label {
 
 }
+.salary-form__symbol {
+  flex: 5%;
+}
 .salary-form__input {
-  border: none;
-  border-bottom: 1px solid #000;
+  border: 2px solid @colour-secondary;
+  flex: 95%;
   font-family: @font-main;
   font-size: 16px;
-  padding: 5px;
+  padding: 10px 5px;
 }

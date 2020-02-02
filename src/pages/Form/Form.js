@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import isNum from "./isNum";
+import { isNum } from "./isNum";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
@@ -31,7 +31,6 @@ const FormContainer = ({ handleSubmit }) => {
       <h1>Federal Income Tax Calculator 2019</h1>
       <form className="salary-form__form" onSubmit={validationCheck} noValidate>
         <Input 
-          label="Salary Input"
           text="Please enter your annual salary"
           type="text"
           name="salaryInput"
