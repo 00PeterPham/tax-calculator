@@ -1,1 +1,1 @@
-export { default } from "./TaxResults";
+export { default } from './TaxResults';

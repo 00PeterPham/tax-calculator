@@ -1,1 +1,1 @@
-export { default } from "./TaxBracket";
+export { default } from './TaxBracket';

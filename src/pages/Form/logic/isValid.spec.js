@@ -1,22 +1,22 @@
-import { isValid } from "./isValid";
+import { isValid } from './isValid';
 
 describe('isInvalid', () => {
   describe('given valid number', () => {
     test('Checks if string consists of numbers, commas and a decimal', () => {
-      expect(isValid("100,000.00")).toBe(true);
+      expect(isValid('100,000.00')).toBe(true);
     });
   });
   describe('given invalid number', () => {
     test('Return false if string is empty', () => {
-      expect(isValid("")).toBe(false);
+      expect(isValid('')).toBe(false);
     });
     test('Return false if string is not a number', () => {
-      expect(isValid("AB100,000.00")).toBe(false);
+      expect(isValid('AB100,000.00')).toBe(false);
     });
     test('Return false if string has more than 1 decimal', () => {
-      expect(isValid("100.00.00")).toBe(false);
+      expect(isValid('100.00.00')).toBe(false);
     });
   });
-})
+});
 
 //TO DO: Rework

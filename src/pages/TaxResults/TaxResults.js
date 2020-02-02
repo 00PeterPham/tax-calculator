@@ -1,7 +1,7 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { calcTotalTax, taxCalculator } from "./logic/calculators.js";
-import { formatNumber } from "../../utils";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { calcTotalTax, taxCalculator } from './logic/calculators.js';
+import { formatNumber } from '../../utils';
 import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';
 
@@ -36,31 +36,25 @@ const TaxResults = ({ salary }) => {
   const taxResults = taxCalculator(salary, taxBrackets);
   const totalTax = calcTotalTax(taxResults);
   const history = useHistory();
-  
+
   const goBack = () => {
     history.goBack();
-  }
+  };
 
-  const renderTaxBrackets = taxResults.map((taxResult) => (
-     <TaxBracket key={taxResult.taxBracket} taxResult={taxResult} />
+  const renderTaxBrackets = taxResults.map(taxResult => (
+    <TaxBracket key={taxResult.taxBracket} taxResult={taxResult} />
   ));
 
   return (
-    <div className="tax-results"> 
+    <div className="tax-results">
       <h1>Federal Income Tax Rates</h1>
       <div className="tax-results__container">
         <h2>Salary: ${formatNumber(salary)}</h2>
         {renderTaxBrackets}
-        <div className="tax-results__total-tax">
-          Total Tax: ${formatNumber(totalTax)}
-        </div>
-        <Button 
-          className="tax-results__button" 
-          text="Go Back" 
-          onClick={goBack}
-        />
+        <div className="tax-results__total-tax">Total Tax: ${formatNumber(totalTax)}</div>
+        <Button className="tax-results__button" text="Go Back" onClick={goBack} />
       </div>
     </div>
   );
-}
+};
 export default TaxResults;
