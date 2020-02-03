@@ -13,21 +13,21 @@ In 2019, Canada’s Income Tax Brackets were:
 ## Getting Started:
 
 Install node>=10.0.0 and npm>=6.0.0.
-Run npm install to install root dependencies.
+Run `npm install` to install root dependencies.
 
 ## Run Development Server
 
-npm run start
+`npm run start`
 
 - runs webpack dev server on localhost:8080
 - contentBase is ./dist
 
 ## Run Build for Prouction
 
-npm run build
+`npm run build`
 
 - outputs in ./dist folder
 
 ## Run Unit Tests
 
-- npm run test
+`npm run test`
