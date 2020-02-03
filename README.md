@@ -44,8 +44,6 @@ at Points. Please **do not fork or submit pull requests** to this repository.
 - Change App.js file to routing file
 - Find out better way to redirect page after form submit. <Redirect /> ? \*\*\* - IN PROGRESS
 
-- Add Unit Tests for the rest of Utils, add Error testing as well. (taxCalculator.js)
-- Add Unit Tests for Components
 - Create Routing file : https://codeburst.io/getting-started-with-react-router-5c978f70df91
 - Add reload on results page redirect to FormContainer path="/"
 

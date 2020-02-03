@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { calcTotalTax, taxCalculator } from './logic/calculators.js';
+import { calcEffectiveTaxRate, calcTotalTax, taxCalculator } from './logic/calculators.js';
+import { convertDecimalToPercentage } from '../../shared/convertDecimalToPercentage';
 import { formatNumber } from '../../shared/formatNumber';
 import Button from '../../components/Button';
 import TaxBracket from '../../components/TaxBracket';
@@ -35,6 +36,7 @@ const TaxResults = ({ salary }) => {
   ];
   const taxResults = taxCalculator(salary, taxBrackets);
   const totalTax = calcTotalTax(taxResults);
+  const effectiveTaxRate = calcEffectiveTaxRate(salary, totalTax);
   const history = useHistory();
 
   const goBack = () => {
@@ -51,7 +53,16 @@ const TaxResults = ({ salary }) => {
       <div className="tax-results__container">
         <h2>Salary: ${formatNumber(salary)}</h2>
         {renderTaxBrackets}
-        <div className="tax-results__total-tax">Total Tax: ${formatNumber(totalTax)}</div>
+        <div className="tax-results__total-tax">
+          <span className="tax-results__label">Total Tax:</span>
+          <span className="tax-results__value">${formatNumber(totalTax)}</span>
+        </div>
+        <div className="tax-results__effective-tax-rate">
+          <span className="tax-results__label">Effective Tax Rate:</span>
+          <span className="tax-results__value">
+            {convertDecimalToPercentage(effectiveTaxRate)}%
+          </span>
+        </div>
         <Button className="tax-results__button" text="Go Back" onClick={goBack} />
       </div>
     </div>

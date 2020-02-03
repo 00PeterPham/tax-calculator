@@ -7,8 +7,17 @@
 .tax-results__container {
   margin-top: 40px;
 }
-.tax-results__total-tax {
+.tax-results__total-tax,
+.tax-results__effective-tax-rate {
+  display: flex;
   font-size: 30px;
-  font-weight: bold;
   margin-bottom: 20px;
+
+  .tax-results__label,
+  .tax-results__value {
+    flex: 50%;
+  }
+}
+.tax-results__value {
+  font-weight: bold;
 }

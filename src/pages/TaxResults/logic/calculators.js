@@ -47,3 +47,7 @@ export const calcTotalTax = taxResults => {
   }
   return sumTax;
 };
+
+export const calcEffectiveTaxRate = (salary, totalTax) => {
+  return totalTax / salary;
+};

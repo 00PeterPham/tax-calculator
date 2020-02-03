@@ -4,11 +4,14 @@
   padding: 15px;
   margin: 20px 0;
 
-  span {
-    display: inline-block;
-    min-width: 150px;
+  & > h3,
+  div {
+    display: flex;
+  }
+  .tax-results__label {
+    flex: 20%;
   }
   .tax-results__value {
-    font-weight: bold;
+    flex: 80%;
   }
 }
