@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { isValid } from './logic/isValid';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -6,6 +7,7 @@ import Error from '../../components/Error';
 
 const FormContainer = ({ handleSubmit }) => {
   const [inputError, setInputError] = useState(false);
+  const history = useHistory();
 
   const handleInputFocus = () => {
     setInputError(false);
@@ -20,7 +22,9 @@ const FormContainer = ({ handleSubmit }) => {
       setInputError(true);
     } else {
       setInputError(false);
-      handleSubmit(evt.target);
+      handleSubmit(evt.target, () => {
+        history.push('/results');
+      });
     }
   };
 

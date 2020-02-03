@@ -9,9 +9,16 @@
     display: flex;
   }
   .tax-results__label {
-    flex: 20%;
+    flex: 30%;
   }
   .tax-results__value {
-    flex: 80%;
+    flex: 70%;
+  }
+
+  .tax-results__label,
+  .tax-results__value {
+    @media (max-width: @screen-mobile-sml) {
+      flex: 50%;
+    }
   }
 }

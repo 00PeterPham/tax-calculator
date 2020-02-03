@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { sanitize } from './logic/sanitize.js';
 import Form from '../../pages/Form';
 import TaxResults from '../../pages/TaxResults';
@@ -10,10 +10,7 @@ class App extends Component {
     salary: 0,
   };
 
-  goResultsPage = () => {
-    this.props.history.push('/results');
-  };
-  handleSubmit = evt => {
+  handleSubmit = (evt, callback) => {
     const inputVal = evt.salaryInput.value;
     const salary = sanitize(inputVal);
 
@@ -21,7 +18,7 @@ class App extends Component {
       {
         salary,
       },
-      this.goResultsPage(),
+      callback(),
     );
   };
 
@@ -29,16 +26,16 @@ class App extends Component {
     const { handleSubmit } = this;
     const { salary } = this.state;
     return (
-      <>
+      <Router basename={window.location.pathname}>
         <Route exact path="/">
           <Form handleSubmit={handleSubmit} />
         </Route>
         <Route path="/results">
           <TaxResults salary={salary} />
         </Route>
-      </>
+      </Router>
     );
   }
 }
 
-export default withRouter(App);
+export default App;
